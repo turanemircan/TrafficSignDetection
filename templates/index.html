@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yol İşareti Tanıma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+        }
+        .container {
+            background-color: #ffffff10;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px #00000033;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #f1f1f1;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        button {
+            background-color: #00c9a7;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid #00c9a7;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            background: #ffffff20;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚦 Yol İşareti Tanıma Sistemi</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="file-upload" style="display: block; margin-bottom: 10px;">📁 Dosya seçin:</label>
+        
+            <input type="file" name="file" id="file-upload" accept="image/*" required 
+                style="display: none;" onchange="document.getElementById('file-name').textContent = this.files[0]?.name || 'Dosya seçilmedi';">
+        
+            <button type="button" onclick="document.getElementById('file-upload').click()">Dosya Seç</button>
+        
+            <p id="file-name" style="margin: 15px 0 5px 0;">Dosya seçilmedi</p>
+        
+            <button type="submit" style="margin-top: 20px;">Fotoğrafı Yükle</button>
+        </form>
+        
+
+        {% if image_path %}
+        <img src="{{ image_path }}" alt="Yüklenen Fotoğraf" style="width: 200px; height: 200px; object-fit: contain; margin-top: 20px; border-radius: 8px; border: 2px solid #00c9a7; background-color: #ffffff10;">
+            <div class="result">
+                <p><strong>🔍 Tespit:</strong> {{ predicted_class }}</p>
+                <p><strong>🎯 Güven:</strong> {{ "%.2f" | format(confidence) }}%</p>
+                <p><strong>⚡ Inference Süresi:</strong> {{ "%.2f" | format(inference_time) }} ms</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
