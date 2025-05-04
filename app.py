@@ -9,7 +9,7 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['RESULT_FOLDER'] = 'static/signs'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = YOLO(r"C:\Users\Emircan\Documents\Python\Yol_Isareti_Tanima_Sistemi\runs\detect\train\weights\best.pt")
+model = YOLO(r"runs\detect\train\weights\best.pt")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
