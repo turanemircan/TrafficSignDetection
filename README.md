@@ -4,11 +4,15 @@ Trafik işaretlerini tespit eden bir yapay zeka modelini Flask arayüzüyle birl
 
 ## 🔧 Kurulum
 
-bash
-git clone https://github.com/turanemircan/TrafficSignDetection.git
-cd TrafficSignDetection
-pip install -r requirements.txt
-python app.py
+<pre>bash 
+  
+git clone https://github.com/turanemircan/TrafficSignDetection.git 
+  
+cd TrafficSignDetection 
+  
+pip install -r requirements.txt 
+  
+python app.py  </pre>
 
 ## 📁 Dosya Yapısı
 
