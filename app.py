@@ -9,7 +9,7 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['RESULT_FOLDER'] = 'static/signs'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = YOLO("C:/Users/Batuhan/Desktop/TrafficSignDetection/runs/detect/train/weights/best.pt")
+model = YOLO(r"C:\Users\Emircan\Documents\Python\Yol_Isareti_Tanima_Sistemi\runs\detect\train\weights\best.pt")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -44,10 +44,8 @@ def index():
                         example_sign_path = f"signs/{f}" 
                         break
 
-        # Inference süresi
         inference_time = result.speed['inference']
 
-        # Yüklenen resmi kaydet
         save_path = os.path.join(app.config['UPLOAD_FOLDER'], img_file.filename)
         img.save(save_path)
 
